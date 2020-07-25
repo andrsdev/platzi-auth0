@@ -1,10 +1,16 @@
 const express = require('express');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
 const { config } = require('./config');
 
 const PORT = 5000;
 const app = express();
+
+app.use(cors());
+
+//PRODUCTION 
+//app.use(cors({ origin: "http://example.com" }));
 
 app.use(bodyParser.json());
 
@@ -28,4 +34,5 @@ app.post('/api/auth/verify', function (req, res) {
 const server = app.listen(PORT, function () {
     console.log(`Listening http://localhost:${PORT}`);
 });
+
 
